@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <b-navbar toggleable="md" type="dark" variant="info">
+      <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+      <b-navbar-brand href="#">RabbitMQ Audit</b-navbar-brand>
+    </b-navbar>
+
     <router-view/>
   </div>
 </template>
@@ -18,6 +22,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
 }
 </style>

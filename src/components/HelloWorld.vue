@@ -1,94 +1,60 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <b-container fluid>
+      <b-row>
+        <b-col cols="6">
+          <b-input-group prepend="uri">
+            <b-form-input></b-form-input>
+          </b-input-group>
+        </b-col>
+        <b-col cols="3">
+          <b-input-group prepend="queue">
+            <b-form-input></b-form-input>
+          </b-input-group>
+        </b-col>
+        <b-col cols="1">
+          <b-dropdown text="items" slot="append">
+            <b-dropdown-item>10</b-dropdown-item>
+            <b-dropdown-item>50</b-dropdown-item>
+            <b-dropdown-item>100</b-dropdown-item>
+            <b-dropdown-item>200</b-dropdown-item>
+          </b-dropdown>
+        </b-col>
+        <b-col col="2">
+          <b-button size="" v-on:click="search()" variant="primary">
+            search
+          </b-button>
+        </b-col>
+      </b-row>
+      <b-row v-for="(value, index) in state.body" :key="index" >
+        <Row :body=value></Row>
+      </b-row>
+    </b-container>
+    <a href="#" class="float">
+      <i class="fa fa-plus my-float"></i>
+    </a>
   </div>
 </template>
 
 <script>
+import Row from '@/components/Row';
+
 export default {
   name: 'HelloWorld',
+  components: {
+    Row,
+  },
+  methods: {
+    search() {
+      this.state.body = ['B1', 'B2', 'B3'];
+    },
+  },
   data() {
     return {
       msg: 'Welcome to Your Vue.js App',
+      state: {
+        body: [],
+      },
     };
   },
 };
@@ -96,18 +62,35 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+  h1, h2 {
+    font-weight: normal;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  a {
+    color: #42b983;
+  }
+
+  .float{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
+    background-color:#0C9;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+  }
+
+  .my-float{
+    margin-top:22px;
+  }
 </style>
