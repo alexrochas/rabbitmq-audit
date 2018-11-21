@@ -1,6 +1,9 @@
-# rabbitmq-audit
-
+# RabbitMQ Audit (WIP)
 > A Vue.js project
+
+A work in progress with VueJS!
+
+![demo](demo.png)
 
 ## Build Setup
 
